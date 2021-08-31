@@ -37,3 +37,6 @@ source $HOME/.config/nvim/lua/telescope_settings.vim
 :lua require('neogit_settings')
 :lua require('nvim_lsp_settings')
 :lua require('gdscript_settings')
+
+" work-around, lua code is not working
+let g:coq_settings = { 'auto_start': 'shut-up' }
