@@ -36,4 +36,4 @@ source $HOME/.config/nvim/lua/general_settings.vim
 source $HOME/.config/nvim/lua/telescope_settings.vim
 :lua require('neogit_settings')
 :lua require('nvim_lsp_settings')
-source $HOME/.config/nvim/lua/gdscript_settings.vim
+:lua require('gdscript_settings')
