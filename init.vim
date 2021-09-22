@@ -16,8 +16,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'ahmedkhalf/project.nvim'
 
 " A Magit clone for Neovim that is geared toward the Vim philosophy.
-Plug 'TimUntersberger/neogit'
-
+" Plug 'TimUntersberger/neogit'
 " A collection of common configurations for built-in language server client.
 Plug 'neovim/nvim-lspconfig'
 
@@ -30,13 +29,17 @@ Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 " Godot plugin for syntax
 Plug 'habamax/vim-godot'
 
+" Autocomplete brackeys
+Plug 'jiangmiao/auto-pairs'
+
 call plug#end()
 
 source $HOME/.config/nvim/lua/general_settings.vim
 source $HOME/.config/nvim/lua/telescope_settings.vim
-:lua require('neogit_settings')
+" :lua require('neogit_settings')
 :lua require('nvim_lsp_settings')
 :lua require('gdscript_settings')
+:lua require('clang_settings')
 
 " work-around, lua code is not working
 let g:coq_settings = { 'auto_start': 'shut-up' }

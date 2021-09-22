@@ -1,6 +1,6 @@
 " color scheme
-set background=dark
-colorscheme solarized8
+" set background=dark
+" colorscheme solarized8
 
 " set tab size to 4 spaces
 filetype plugin indent on
