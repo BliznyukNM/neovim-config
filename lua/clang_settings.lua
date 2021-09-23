@@ -1,4 +1,4 @@
-nvim_lsp.clangd.setup { coq.lsp_ensure_capabilities {
+nvim_lsp.clangd.setup {
     capabilities = capabilities,
     on_attach = on_attach
-}}
+}
