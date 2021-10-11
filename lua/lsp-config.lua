@@ -48,6 +48,20 @@ local function on_attach(client, bufnr)
 end
 
 
+local function jdt_on_attach(client, bufnr)
+    on_attach(client, bufnr)
+
+    local opts = {silent = true;}
+    jdtls.setup.add_commands()
+    api.nvim_buf_set_keymap(bufnr, "n", "<leader>ri", "<Cmd>lua require'jdtls'.organize_imports()<CR>", opts)
+    api.nvim_buf_set_keymap(bufnr, "n", "<leader>tc", "<Cmd>lua require'jdtls'.test_class()<CR>", opts)
+    api.nvim_buf_set_keymap(bufnr, "n", "<leader>tm", "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", opts)
+    api.nvim_buf_set_keymap(bufnr, "v", "crv", "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", opts)
+    api.nvim_buf_set_keymap(bufnr, "n", "crv", "<Cmd>lua require('jdtls').extract_variable()<CR>", opts)
+    api.nvim_buf_set_keymap(bufnr, "v", "crm", "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", opts)
+end
+
+
 local function mk_config()
     local capabilities = lsp.protocol.make_client_capabilities()
     capabilities.workspace.configuration = true
@@ -131,6 +145,16 @@ function M.start_pylsp()
     config.cmd = {'pylsp'}
     config.name = 'pylsp'
     add_client_by_cfg(config, {'.git'})
+end
+
+
+function M.start_jdt()
+    local config = mk_config()
+    local root_dir = jdtls.setup.find_root({'.git', 'pom.xml', 'mvnw*'})
+    api.nvim_set_current_dir(root_dir)
+    config.cmd = {vim.fn.expand('$HOME/.config/nvim/java-lsp.sh')}
+    config.on_attach = jdt_on_attach
+    jdtls.start_or_attach(config)
 end
 
 
