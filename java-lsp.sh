@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 JAR="$HOME/.config/nvim/backends/jdt-language-server/plugins/org.eclipse.equinox.launcher_*.jar"
-LAUNCH_ARGS= \
-    # -javaagent:$HOME/Library/lombok/lombok.jar
 GRADLE_HOME=$HOME/gradle /opt/homebrew/opt/openjdk@11/bin/java \
     -Declipse.application=org.eclipse.jdt.ls.core.id1 \
     -Dosgi.bundles.defaultStartLevel=4 \
     -Declipse.product=org.eclipse.jdt.ls.core.product \
     -Dlog.protocol=true \
     -Dlog.level=ALL \
-    $LAUNCH_ARGS \
+    -javaagent:$HOME/Library/lombok/lombok.jar \
     -Xms1g \
     -Xmx2G \
     -jar $(echo "$JAR") \
