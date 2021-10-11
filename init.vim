@@ -1,3 +1,3 @@
-source settings.vim
-source packages.vim
-source ide.vim
+source $HOME/.config/nvim/settings.vim
+source $HOME/.config/nvim/packages.vim
+source $HOME/.config/nvim/ide.vim

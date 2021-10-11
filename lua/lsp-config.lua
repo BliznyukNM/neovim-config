@@ -78,9 +78,11 @@ local function add_client_by_cfg(config, root_markers)
     if not client_id then
         client_id = lsp.start_client(config)
         lsps[lsp_id] = client_id
+        print(string.format('Starting %s LSP server on root %s', config.name, root_dir))
     end
     local bufnr = api.nvim_get_current_buf()
     lsp.buf_attach_client(bufnr, client_id)
+    api.nvim_set_current_dir(root_dir)
 end
 
 
@@ -112,6 +114,22 @@ function M.start_lua_ls()
     local binary_path = root_path..'bin/macOS/lua-language-server'
     config.name = 'luals'
     config.cmd = {binary_path, root_path..'main.lua'}
+    add_client_by_cfg(config, {'.git'})
+end
+
+
+function M.start_clangd()
+    local config = mk_config()
+    config.cmd = {'clangd', '--background-index'}
+    config.name = 'clangd'
+    add_client_by_cfg(config, {'compile_commands.json', '.git'})
+end
+
+
+function M.start_pylsp()
+    local config = mk_config()
+    config.cmd = {'pylsp'}
+    config.name = 'pylsp'
     add_client_by_cfg(config, {'.git'})
 end
 

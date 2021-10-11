@@ -11,4 +11,8 @@ set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
 
-:lua require('general_settings')
+lua << EOF
+vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+EOF
