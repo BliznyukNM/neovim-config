@@ -158,4 +158,12 @@ function M.start_jdt()
 end
 
 
+function M.start_lemminx()
+    local config = mk_config()
+    config.cmd = {vim.fn.expand('$HOME/.config/nvim/backends/lemminx')}
+    config.name = 'lemminx'
+    add_client_by_cfg(config, {'.'})
+end
+
+
 return M

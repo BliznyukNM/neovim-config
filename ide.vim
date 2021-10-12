@@ -6,6 +6,7 @@ augroup lsp
     au FileType cpp lua require('lsp-config').start_clangd()
     au FileType python lua require('lsp-config').start_pylsp()
     au FileType java lua require('lsp-config').start_jdt()
+    au FileType xml,xsd,svg lua require('lsp-config').start_lemminx()
 augroup END
 
 
