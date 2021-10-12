@@ -12,7 +12,23 @@ set shiftwidth=4
 set expandtab
 
 lua << EOF
+-- Set leader key to <Space>
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+
+-- Telescope settings
+local telescope = require('telescope')
+local ignore_patterns = {'%.png', '%.meta', '%Library/*'}
+telescope.setup {
+    defaults = {
+        file_ignore_patterns = ignore_patterns
+    }
+}
 EOF
+
+" Telescope mappings
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
