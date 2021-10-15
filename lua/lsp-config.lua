@@ -79,7 +79,11 @@ end
 
 local function add_client_by_cfg(config, root_markers)
     local root_dir = jdtls.setup.find_root(root_markers)
-    if not root_dir then return end
+    if not root_dir then
+        api.nvim_command(string.format(
+            ':echohl WarningMsg | redraw | echo "No directory found'))
+        return
+    end
 
     local cmd = config.cmd[1]
     if tonumber(vim.fn.executable(cmd)) == 0 then
@@ -89,11 +93,14 @@ local function add_client_by_cfg(config, root_markers)
     end
     config.root_dir = root_dir
     local lsp_id = tostring(vim.bo.filetype) .. "?" .. root_dir
-    local client_id = lsps[lsp_id]
-    if not client_id then
+    local client_id = -1
+    if not (lsps[lsp_id] ~= nil) then
+        print(string.format('Starting %s LSP server on root %s', config.name, root_dir))
         client_id = lsp.start_client(config)
         lsps[lsp_id] = client_id
-        print(string.format('Starting %s LSP server on root %s', config.name, root_dir))
+        print('Created LSP server #'..client_id)
+    else
+        client_id = lsps[lsp_id]
     end
     local bufnr = api.nvim_get_current_buf()
     lsp.buf_attach_client(bufnr, client_id)
@@ -152,7 +159,6 @@ end
 function M.start_jdt()
     local config = mk_config()
     local root_dir = jdtls.setup.find_root({'.git', 'pom.xml', 'mvnw*'})
-    api.nvim_set_current_dir(root_dir)
     config.cmd = {vim.fn.expand('$HOME/.config/nvim/java-lsp.sh')}
     config.name = 'jdtls'
     config.on_attach = jdt_on_attach
@@ -171,10 +177,10 @@ end
 function M.start_omnisharp()
     local config = mk_config()
     local pid = vim.fn.getpid()
-    local omnisharp_bin = vim.fn.expand('$HOME/.config/nvim/backends/omnisharp-osx/run')
-    config.cmd = {omnisharp_bin, '--languageserver', '--hostPID', tostring(pid)}
+    local omnisharp_exe = vim.fn.expand('$HOME/.config/nvim/backends/omnisharp-osx/omnisharp/OmniSharp.exe')
+    config.cmd = {'mono', omnisharp_exe, '--languageserver', '--hostPID', tostring(pid)}
     config.name = 'omnisharp'
-    add_client_by_cfg(config, {'.sln', '.csproj'})
+    add_client_by_cfg(config, {'.csproj', '.git', '.sln'})
 end
 
 
