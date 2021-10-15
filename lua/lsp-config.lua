@@ -154,6 +154,7 @@ function M.start_jdt()
     local root_dir = jdtls.setup.find_root({'.git', 'pom.xml', 'mvnw*'})
     api.nvim_set_current_dir(root_dir)
     config.cmd = {vim.fn.expand('$HOME/.config/nvim/java-lsp.sh')}
+    config.name = 'jdtls'
     config.on_attach = jdt_on_attach
     jdtls.start_or_attach(config)
 end
@@ -164,6 +165,16 @@ function M.start_lemminx()
     config.cmd = {vim.fn.expand('$HOME/.config/nvim/backends/lemminx')}
     config.name = 'lemminx'
     add_client_by_cfg(config, {'.'})
+end
+
+
+function M.start_omnisharp()
+    local config = mk_config()
+    local pid = vim.fn.getpid()
+    local omnisharp_bin = vim.fn.expand('$HOME/.config/nvim/backends/omnisharp-osx/run')
+    config.cmd = {omnisharp_bin, '--languageserver', '--hostPID', tostring(pid)}
+    config.name = 'omnisharp'
+    add_client_by_cfg(config, {'.sln', '.csproj'})
 end
 
 
