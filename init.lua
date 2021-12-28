@@ -13,5 +13,6 @@ require "user.lualine"
 require "user.project"
 require "user.identline"
 require "user.whichkey"
+require "user.toggleterm"
 
 vim.cmd "colorscheme darkplus"

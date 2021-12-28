@@ -52,6 +52,7 @@ return packer.startup(function(use)
   use "lukas-reineke/indent-blankline.nvim" -- Identetional lines
   use "antoinemadec/FixCursorHold.nvim" -- Fix fos lsp hold buffer performance
   use "folke/which-key.nvim" -- Shortcuts explorer
+  use "akinsho/toggleterm.nvim" -- Terminal window
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
