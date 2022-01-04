@@ -53,6 +53,8 @@ return packer.startup(function(use)
   use "antoinemadec/FixCursorHold.nvim" -- Fix fos lsp hold buffer performance
   use "folke/which-key.nvim" -- Shortcuts explorer
   use "akinsho/toggleterm.nvim" -- Terminal window
+  use 'kyazdani42/nvim-web-devicons' -- File icons
+  use 'kyazdani42/nvim-tree.lua' -- Project tree browser
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out

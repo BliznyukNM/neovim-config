@@ -14,5 +14,6 @@ require "user.project"
 require "user.identline"
 require "user.whichkey"
 require "user.toggleterm"
+require "user.nvim-tree"
 
 vim.cmd "colorscheme darkplus"
