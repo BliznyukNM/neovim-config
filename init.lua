@@ -2,6 +2,9 @@ require "user.options"
 require "user.keymaps"
 require "user.plugins"
 require "user.colorscheme"
+
+vim.cmd "colorscheme darkplus"
+
 require "user.cmp"
 require "user.lsp"
 require "user.telescope"
@@ -15,5 +18,4 @@ require "user.identline"
 require "user.whichkey"
 require "user.toggleterm"
 require "user.nvim-tree"
-
-vim.cmd "colorscheme darkplus"
+require "user.dap"

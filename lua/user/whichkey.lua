@@ -84,6 +84,19 @@ local mappings = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Buffers",
   },
+
+  d = {
+    name = "Debugger",
+    c = { "<cmd>lua require('dap').continue()<cr>", "Run debugger" },
+    i = { "<cmd>lua require('dap').step_into()<cr>", "Step into" },
+    K = { "<cmd>lua require('dap.ui.widgets').hover()<cr>", "Hover" },
+    o = { "<cmd>lua require('dap').step_over()<cr>", "Step over" },
+    p = { "<cmd>lua require('dap').toggle_breakpoint()<cr>", "Toggle breakpoint" },
+    r = { "<cmd>lua require('dap').run()<cr>", "Run" },
+    R = { "<cmd>lua require('dap').run_last()<cr>", "Re-run" },
+    s = { "<cmd>lua require('dap').disconnect()<cr>", "Check state" },
+  },
+
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
