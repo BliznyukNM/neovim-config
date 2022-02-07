@@ -1,31 +1,18 @@
-local status_ok, dap = pcall(require, "dap")
-if not status_ok then
+local dap_ok, _ = pcall(require, "dap")
+if not dap_ok then
   print("nvim-dap is not available")
 	return
 end
 
-dap.adapters.lldb = {
-  type = "executable",
-  command = "lldb-vscode",
-  name = "lldb"
-}
+local di_ok, dap_install = pcall(require, "dap-install")
+if not di_ok then
+  print("nvim-dap is not available")
+	return
+end
 
-dap.configurations.cpp = {
-  {
-    name = "Launch",
-    type = "lldb",
-    request = "launch",
-    program = function()
-      return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-    end,
-    cwd = "${workspaceFolder}",
-    stopOnEntry = false,
-    args = {},
-    runInTerminal = false,
-  }
-}
+local dbg_list = require("dap-install.api.debuggers").get_installed_debuggers()
 
-dap.configurations.c = dap.configurations.cpp
-dap.configurations.rust = dap.configurations.cpp
-dap.configurations.nim = dap.configurations.cpp
-dap.set_log_level("TRACE")
+for _, debugger in ipairs(dbg_list) do
+	dap_install.config(debugger)
+end
+
