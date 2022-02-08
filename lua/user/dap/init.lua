@@ -22,10 +22,14 @@ vim.fn.sign_define('DapBreakpoint', {text='', texthl='Error', linehl='', numh
 
 local M = {}
 
+local sidebar
+
 function M.open_sidebar_scopes()
   local widgets = require('dap.ui.widgets')
-  local my_sidebar = widgets.sidebar(widgets.scopes)
-  my_sidebar.open()
+  if sidebar == nil then
+    sidebar = widgets.sidebar(widgets.scopes, {width = 50})
+  end
+  sidebar.toggle()
 end
 
 return M
