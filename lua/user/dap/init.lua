@@ -16,3 +16,16 @@ for _, debugger in ipairs(dbg_list) do
 	dap_install.config(debugger)
 end
 
+require("nvim-dap-virtual-text").setup()
+
+vim.fn.sign_define('DapBreakpoint', {text='', texthl='Error', linehl='', numhl=''})
+
+local M = {}
+
+function M.open_sidebar_scopes()
+  local widgets = require('dap.ui.widgets')
+  local my_sidebar = widgets.sidebar(widgets.scopes)
+  my_sidebar.open()
+end
+
+return M

@@ -94,7 +94,7 @@ local mappings = {
     p = { "<cmd>lua require('dap').toggle_breakpoint()<cr>", "Toggle breakpoint" },
     r = { "<cmd>lua require('dap').run()<cr>", "Run" },
     R = { "<cmd>lua require('dap').run_last()<cr>", "Re-run" },
-    s = { "<cmd>lua require('dap').disconnect()<cr>", "Check state" },
+    s = { "<cmd>lua require('dap').disconnect()<cr>", "Stop" },
   },
 
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
