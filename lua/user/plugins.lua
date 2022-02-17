@@ -68,6 +68,8 @@ return packer.startup(function(use)
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp" -- LSP snippets
 
+  -- org mode
+  use "nvim-orgmode/orgmode"
 
   -- DAP
   use "mfussenegger/nvim-dap" -- main DAP plugin
