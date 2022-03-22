@@ -72,7 +72,7 @@ return packer.startup(function(use)
   use "nvim-orgmode/orgmode"
 
   -- DAP
-  use "BliznyukNM/nvim-dap" -- main DAP plugin
+  use "mfussenegger/nvim-dap" -- main DAP plugin
   use "Pocco81/DAPInstall.nvim" -- install DAP configs automatically
 
   -- snippets
