@@ -73,7 +73,10 @@ return packer.startup(function(use)
 
   -- DAP
   use "mfussenegger/nvim-dap" -- main DAP plugin
-  use "Pocco81/DAPInstall.nvim" -- install DAP configs automatically
+  use {
+    "Pocco81/DAPInstall.nvim",
+    commit = "24923c3819a450a772bb8f675926d530e829665f"
+  } -- install DAP configs automatically
 
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
