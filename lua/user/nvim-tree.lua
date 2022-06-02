@@ -1,31 +1,9 @@
 -- following options are the default
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
-vim.g.nvim_tree_icons = {
-  default = "",
-  symlink = "",
-  git = {
-    unstaged = "",
-    staged = "S",
-    unmerged = "",
-    renamed = "➜",
-    deleted = "",
-    untracked = "U",
-    ignored = "◌",
-  },
-  folder = {
-    default = "",
-    open = "",
-    empty = "",
-    empty_open = "",
-    symlink = "",
-  },
-}
-
 local status_ok, nvim_tree = pcall(require, "nvim-tree")
 if not status_ok then
   return
 end
-
 
 
 local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
@@ -35,18 +13,39 @@ end
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
-vim.cmd([[
-let g:nvim_tree_git_hl = 1
-let g:nvim_tree_root_folder_modifier = ':~'
-let g:nvim_tree_show_icons = {
-    \ 'git': 1,
-    \ 'folders': 1,
-    \ 'files': 1,
-    \ 'folder_arrows': 1,
-    \ }
-]])
-
 nvim_tree.setup {
+  renderer = {
+    icons = {
+      glyphs = {
+        default = "",
+        symlink = "",
+        git = {
+          unstaged = "",
+          staged = "S",
+          unmerged = "",
+          renamed = "➜",
+          deleted = "",
+          untracked = "U",
+          ignored = "◌",
+        },
+        folder = {
+          default = "",
+          open = "",
+          empty = "",
+          empty_open = "",
+          symlink = "",
+        }
+      },
+      show = {
+        git = true,
+        folder = true,
+        file = true,
+        folder_arrow = true
+      }
+    },
+    root_folder_modifier = ":~",
+    highlight_git = true,
+  },
   disable_netrw = true,
   hijack_netrw = true,
   open_on_setup = false,
