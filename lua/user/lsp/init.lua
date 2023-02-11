@@ -4,7 +4,12 @@ if not status_ok then
 end
 
 require "user.lsp.lsp-installer"
-require("user.lsp.handlers").setup()
 require "user.lsp.null-ls"
 
-lspconfig.gdscript.setup {}
+local handlers = require("user.lsp.handlers")
+handlers.setup()
+
+lspconfig.gdscript.setup {
+  on_attach = handlers.on_attach,
+  capabilities = handlers.capabilities
+}
