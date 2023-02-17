@@ -15,8 +15,6 @@ configs.setup {
   indent = { enable = true, disable = { "yaml" } },
 }
 
-vim.cmd([[
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
-set foldlevel=99
-]])
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.cmd("set nofoldenable")

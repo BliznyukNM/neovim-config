@@ -89,6 +89,9 @@ return packer.startup(function(use)
   use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
   use "BliznyukNM/nim.nvim" -- nim plugin for LSP
+  use 'williamboman/mason.nvim' -- Installer for LSP and DAP servers
+  use 'williamboman/mason-lspconfig.nvim' -- LSP wrapper
+  use "jay-babu/mason-null-ls.nvim"
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
@@ -99,6 +102,9 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
   }
+
+  -- Codium
+  use 'Exafunction/codeium.vim'
 
   -- Git
   use "lewis6991/gitsigns.nvim"

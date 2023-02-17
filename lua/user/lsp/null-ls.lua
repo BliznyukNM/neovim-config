@@ -1,3 +1,16 @@
+local mason_null_ls_status_ok, mason_null_ls = pcall(require, "mason-null-ls")
+if not mason_null_ls_status_ok then
+	return
+end
+
+require("mason-null-ls").setup({
+    ensure_installed = {
+        -- Opt to list sources here, when available in mason.
+    },
+    automatic_installation = false,
+    automatic_setup = true, -- Recommended, but optional
+})
+
 local null_ls_status_ok, null_ls = pcall(require, "null-ls")
 if not null_ls_status_ok then
 	return

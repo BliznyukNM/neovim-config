@@ -29,7 +29,7 @@ keymap("n", "<leader>e", ":Lex 30<cr>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)
-keymap("n", "<C-Down>", ":resize-2<CR>", opts)
+keymap("n", "<C-Down>", ":resize -2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
@@ -66,7 +66,9 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Telescope
-keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
+keymap("n", "<leader>f",
+  "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
+  opts)
 keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
 
 -- Nvimtree
@@ -78,3 +80,10 @@ keymap("n", "<C-i>", "<cmd>lua require('dap').step_into()<cr>", opts)
 keymap("n", "<C-o>", "<cmd>lua require('dap').step_over()<cr>", opts)
 keymap("n", "<C-p>", "<cmd>lua require('dap').toggle_breakpoint()<cr>", opts)
 keymap("n", "<C-l>", "<cmd>lua require('user.dap').open_sidebar_scopes()<cr>", opts)
+
+-- Codium
+vim.g.codeium_disable_bindings = 1
+vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true })
+vim.keymap.set('i', '<C-j>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+vim.keymap.set('i', '<C-k>', function() return vim.fn['codeium#CycleCompletions']( -1) end, { expr = true })
+vim.keymap.set('i', '<C-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
