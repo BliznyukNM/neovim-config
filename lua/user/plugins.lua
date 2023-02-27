@@ -96,6 +96,7 @@ return packer.startup(function(use)
   -- Telescope
   use "nvim-telescope/telescope.nvim"
   use 'nvim-telescope/telescope-media-files.nvim'
+  use 'nvim-telescope/telescope-dap.nvim'
 
   -- Treesitter
   use {
@@ -103,8 +104,9 @@ return packer.startup(function(use)
     run = ":TSUpdate",
   }
 
-  -- Codium
-  use 'Exafunction/codeium.vim'
+  -- AI
+  -- use 'Exafunction/codeium.vim'
+  use 'zbirenbaum/copilot.lua'
 
   -- Git
   use "lewis6991/gitsigns.nvim"

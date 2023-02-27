@@ -1,20 +1,15 @@
-local dap_ok, _ = pcall(require, "dap")
+local dap_ok, dap = pcall(require, "dap")
 if not dap_ok then
-  print("nvim-dap is not available")
-	return
+  return
 end
 
-local di_ok, dap_install = pcall(require, "dap-install")
-if not di_ok then
-  print("nvim-dap is not available")
-	return
-end
+local godot_opts = require("user.dap.settings.godot")
+dap.adapters = vim.tbl_deep_extend("force", godot_opts.adapters, dap.adapters)
+dap.configurations = vim.tbl_deep_extend("force", godot_opts.configurations, dap.configurations)
 
-local dbg_list = require("dap-install.api.debuggers").get_installed_debuggers()
-
-for _, debugger in ipairs(dbg_list) do
-	dap_install.config(debugger)
-end
+local cpp_opts = require("user.dap.settings.cpp")
+dap.adapters = vim.tbl_deep_extend("force", cpp_opts.adapters, dap.adapters)
+dap.configurations = vim.tbl_deep_extend("force", cpp_opts.configurations, dap.configurations)
 
 require("nvim-dap-virtual-text").setup()
 

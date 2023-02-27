@@ -91,10 +91,12 @@ local mappings = {
     i = { "<cmd>lua require('dap').step_into()<cr>", "Step into" },
     K = { "<cmd>lua require('dap.ui.widgets').hover()<cr>", "Hover" },
     o = { "<cmd>lua require('dap').step_over()<cr>", "Step over" },
-    p = { "<cmd>lua require('dap').toggle_breakpoint()<cr>", "Toggle breakpoint" },
+    p = { "<cmd>lua require('dap').set_breakpoint()<cr>", "Toggle breakpoint" },
     r = { "<cmd>lua require('dap').run()<cr>", "Run" },
     R = { "<cmd>lua require('dap').run_last()<cr>", "Re-run" },
     s = { "<cmd>lua require('dap').disconnect()<cr>", "Stop" },
+    l = { "<cmd>lua require('dap').list_breakpoints()<cr>", "List breakpoints" },
+    x = { "<cmd>lua require('dap').clear_breakpoints()<cr>", "Remove all breakpoints" },
   },
 
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },

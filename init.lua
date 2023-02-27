@@ -18,5 +18,6 @@ require "user.nvim-tree"
 require "user.dap"
 require "user.orgmode"
 require "user.autocmd"
+require "user.copilot"
 
 vim.cmd "colorscheme darkplus"
