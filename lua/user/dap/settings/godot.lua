@@ -10,11 +10,9 @@ return {
     gdscript = {
       {
         type = "godot",
-        request = "attach",
+        request = "launch",
         name = "Launch scene",
         project = "${workspaceFolder}",
-        launch_game_instance = false,
-        launch_scene = false,
       }
     }
   }

@@ -59,6 +59,8 @@ return packer.startup(function(use)
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "lunarvim/darkplus.nvim"
+  use { "catppuccin/nvim", as = "catppuccin" }
+  use "f-person/auto-dark-mode.nvim"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -70,6 +72,9 @@ return packer.startup(function(use)
 
   -- org mode
   use "nvim-orgmode/orgmode"
+
+  -- obsidian
+  use "epwalsh/obsidian.nvim"
 
   -- DAP
   use "mfussenegger/nvim-dap" -- main DAP plugin
