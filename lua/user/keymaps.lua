@@ -79,7 +79,6 @@ keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 keymap("n", "<C-i>", "<cmd>lua require('dap').step_into()<cr>", opts)
 keymap("n", "<C-o>", "<cmd>lua require('dap').step_over()<cr>", opts)
 keymap("n", "<C-p>", "<cmd>lua require('dap').toggle_breakpoint()<cr>", opts)
-keymap("n", "<C-l>", "<cmd>lua require('user.dap').open_sidebar_scopes()<cr>", opts)
 
 -- Codium
 -- vim.g.codeium_disable_bindings = 1

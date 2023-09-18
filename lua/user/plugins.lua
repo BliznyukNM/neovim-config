@@ -70,18 +70,12 @@ return packer.startup(function(use)
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp" -- LSP snippets
 
-  -- org mode
-  use "nvim-orgmode/orgmode"
-
   -- obsidian
   use "epwalsh/obsidian.nvim"
 
   -- DAP
   use "mfussenegger/nvim-dap" -- main DAP plugin
-  use {
-    "Pocco81/DAPInstall.nvim",
-    commit = "24923c3819a450a772bb8f675926d530e829665f"
-  } -- install DAP configs automatically
+  use "rcarriga/nvim-dap-ui"
 
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
@@ -116,6 +110,11 @@ return packer.startup(function(use)
   -- Git
   use "lewis6991/gitsigns.nvim"
   use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+
+  -- Utils
+  use 'rcarriga/nvim-notify'
+  use "AckslD/nvim-neoclip.lua"
+  use 'stevearc/dressing.nvim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

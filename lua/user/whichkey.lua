@@ -95,6 +95,7 @@ local mappings = {
     r = { "<cmd>lua require('dap').run()<cr>", "Run" },
     R = { "<cmd>lua require('dap').run_last()<cr>", "Re-run" },
     s = { "<cmd>lua require('dap').disconnect()<cr>", "Stop" },
+    u = { "<cmd>lua require('dapui').toggle()<cr>", "Toggle UI" },
     l = { "<cmd>lua require('dap').list_breakpoints()<cr>", "List breakpoints" },
     x = { "<cmd>lua require('dap').clear_breakpoints()<cr>", "Remove all breakpoints" },
   },
