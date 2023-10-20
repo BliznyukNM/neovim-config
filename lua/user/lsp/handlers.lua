@@ -88,6 +88,12 @@ M.on_attach = function(client, bufnr)
   if client.name == "tsserver" then
     client.server_capabilities.document_formatting = false
   end
+
+  --- Guard against servers without the signatureHelper capability
+  if client.server_capabilities.signatureHelpProvider then
+    require('lsp-overloads').setup(client, { })
+  end
+
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
 end

@@ -91,6 +91,7 @@ return packer.startup(function(use)
   use 'williamboman/mason.nvim' -- Installer for LSP and DAP servers
   use 'williamboman/mason-lspconfig.nvim' -- LSP wrapper
   use "jay-babu/mason-null-ls.nvim"
+  use {'Issafalcon/lsp-overloads.nvim'} -- To see all overloads
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
