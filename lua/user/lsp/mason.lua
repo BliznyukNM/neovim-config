@@ -13,6 +13,25 @@ if not lsp_ok then
   return
 end
 
+local handlers = require("user.lsp.handlers")
+handlers.setup()
+
+local opts = {
+  on_attach = handlers.on_attach,
+  capabilities = handlers.capabilities
+}
+
+function setup_handler(server_name)
+  local ok, config = pcall(require, "user.lsp.settings." .. server_name)
+  if ok then
+    config = vim.tbl_deep_extend("force", config, opts)
+  else
+    config = opts
+  end
+  vim.lsp.config[server_name] = config
+  vim.lsp.enable(server_name)
+end
+
 mason.setup({
     ui = {
         icons = {
@@ -22,17 +41,12 @@ mason.setup({
         }
     }
 })
+mason_lsp.setup { automatic_enable = false }
 
-mason_lsp.setup()
+setup_handler("lua_ls")
+setup_handler("omnisharp")
 
-local handlers = require("user.lsp.handlers")
-handlers.setup()
-
-local opts = {
-  on_attach = handlers.on_attach,
-  capabilities = handlers.capabilities
-}
-
+--[[
 mason_lsp.setup_handlers {
   function (server_name)
     local ok, config = pcall(require, "user.lsp.settings." .. server_name)
@@ -44,5 +58,6 @@ mason_lsp.setup_handlers {
     lsp_config[server_name].setup(config)
   end
 }
+]]--
 
 lsp_config.gdscript.setup(opts)

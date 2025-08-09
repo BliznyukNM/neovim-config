@@ -72,7 +72,10 @@ keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<leader>p", "<cmd>Telescope neoclip<cr>", opts)
 
 local function toggle_minifiles()
-  if not MiniFiles.close() then MiniFiles.open() end
+  if not MiniFiles.close()
+  then
+    MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
+  end
 end
 vim.keymap.set('n', '<leader>e', toggle_minifiles)
 
